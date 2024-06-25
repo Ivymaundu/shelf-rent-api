@@ -9,19 +9,26 @@ class BranchRequest(BaseModel):
 class BranchResponse(BranchRequest):
     id:int
 
-class LoginRequest(BaseModel):
-    email:str
-    password:str
 
 class EmployeeCreate(BaseModel):
     employee_name:str
     employee_email:str
-    national_id :int
-    password_branch : str
+    national_id :str
+    password: str
+    branch_id : int
     role: EmployeeRole
 
 class EmployeeResponse(EmployeeCreate):
     id:int
+    
+    class Config:
+        orm_mode = True
+        
+
+class LoginRequest(BaseModel):
+    email:str
+    password:str
+
 
 class ShelfTypeRequest(BaseModel):
     size :str
@@ -37,7 +44,7 @@ class ShelfRequest(BaseModel):
     shelf_type_id: int
 
 class ShelfResponse(ShelfRequest):
-    id:str
+    id:int
 
 class PaymentMethodRequest(BaseModel):
     payment_method: str
@@ -58,4 +65,7 @@ class ClientCreate(BaseModel):
     phone_number:str
     start_date: datetime
     shelf_id:int
+
+class ClientResponse(ClientCreate):
+    id : int
 

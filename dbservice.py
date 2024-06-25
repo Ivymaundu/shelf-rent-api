@@ -65,7 +65,7 @@ class Shelf(Base):
     Payment=relationship('Payment' ,backref='shelves')
     client=relationship('Client', backref='shelves') 
 
-class payment_method(Base):
+class PaymentMethod(Base):
     __tablename__= 'payment_methods'
 
     id=Column(Integer,primary_key=True,autoincrement=True)
